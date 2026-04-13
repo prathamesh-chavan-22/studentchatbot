@@ -1,0 +1,317 @@
+[
+  {
+    "id": "tc_001",
+    "type": "basic",
+    "query": "What is FYJC?",
+    "expected_keywords": "admission",
+    "expected_fallback": false,
+    "description": "Basic English query about FYJC"
+  },
+  {
+    "id": "tc_002",
+    "type": "basic",
+    "query": "FYJC admission kaise hota hai?",
+    "expected_keywords": "process",
+    "expected_fallback": false,
+    "description": "Hinglish query about admission process"
+  },
+  {
+    "id": "tc_003",
+    "type": "basic",
+    "query": "अकरावी प्रवेश प्रक्रिया काय आहे?",
+    "expected_keywords": "प्रवेश",
+    "expected_fallback": false,
+    "description": "Marathi query about admission process"
+  },
+  {
+    "id": "tc_004",
+    "type": "basic",
+    "query": "11th admission kaise karein?",
+    "expected_keywords": "process",
+    "expected_fallback": false,
+    "description": "Hindi query about admission"
+  },
+  {
+    "id": "tc_005",
+    "type": "quota",
+    "query": "What are the quota types?",
+    "expected_keywords": "quota",
+    "expected_fallback": false,
+    "description": "English query about quota types"
+  },
+  {
+    "id": "tc_006",
+    "type": "quota",
+    "query": "Management quota kya hai?",
+    "expected_keywords": "quota",
+    "expected_fallback": false,
+    "description": "Hinglish query about management quota"
+  },
+  {
+    "id": "tc_007",
+    "type": "documents",
+    "query": "What documents are required for FYJC admission?",
+    "expected_keywords": "documents",
+    "expected_fallback": false,
+    "description": "English query about required documents"
+  },
+  {
+    "id": "tc_008",
+    "type": "documents",
+    "query": "Documents kya chahiye FYJC ke liye?",
+    "expected_keywords": "documents",
+    "expected_fallback": false,
+    "description": "Hinglish query about documents"
+  },
+  {
+    "id": "tc_009",
+    "type": "eligibility",
+    "query": "What is the minimum marks required for FYJC?",
+    "expected_keywords": "marks",
+    "expected_fallback": false,
+    "description": "English query about eligibility"
+  },
+  {
+    "id": "tc_010",
+    "type": "eligibility",
+    "query": "FYJC ke liye minimum kitne marks chahiye?",
+    "expected_keywords": "marks",
+    "expected_fallback": false,
+    "description": "Hinglish query about minimum marks"
+  },
+  {
+    "id": "tc_011",
+    "type": "rounds",
+    "query": "How many admission rounds are there?",
+    "expected_keywords": "rounds",
+    "expected_fallback": false,
+    "description": "English query about admission rounds"
+  },
+  {
+    "id": "tc_012",
+    "type": "rounds",
+    "query": "Kitne rounds hote hain FYJC admission ke?",
+    "expected_keywords": "rounds",
+    "expected_fallback": false,
+    "description": "Hinglish query about rounds"
+  },
+  {
+    "id": "tc_013",
+    "type": "allotment",
+    "query": "How can I print allotment letter?",
+    "expected_keywords": "allotment",
+    "expected_fallback": false,
+    "description": "English query about allotment letter"
+  },
+  {
+    "id": "tc_014",
+    "type": "allotment",
+    "query": "Allotment letter kaise download karein?",
+    "expected_keywords": "allotment",
+    "expected_fallback": false,
+    "description": "Hinglish query about allotment letter download"
+  },
+  {
+    "id": "tc_015",
+    "type": "cancellation",
+    "query": "How can I cancel my admission?",
+    "expected_keywords": "cancel",
+    "expected_fallback": false,
+    "description": "English query about admission cancellation"
+  },
+  {
+    "id": "tc_016",
+    "type": "cancellation",
+    "query": "Admission cancel kaise karein?",
+    "expected_keywords": "cancel",
+    "expected_fallback": false,
+    "description": "Hinglish query about admission cancellation"
+  },
+  {
+    "id": "tc_017",
+    "type": "fallback",
+    "query": "What is the weather today?",
+    "expected_fallback": true,
+    "description": "Out of scope query - should trigger fallback"
+  },
+  {
+    "id": "tc_018",
+    "type": "fallback",
+    "query": "Who is the president of India?",
+    "expected_fallback": true,
+    "description": "Out of scope query - general knowledge"
+  },
+  {
+    "id": "tc_019",
+    "type": "fallback",
+    "query": "Tell me a joke",
+    "expected_fallback": true,
+    "description": "Out of scope query - entertainment"
+  },
+  {
+    "id": "tc_020",
+    "type": "edge_case",
+    "query": "?",
+    "expected_fallback": true,
+    "description": "Edge case - single character"
+  },
+  {
+    "id": "tc_021",
+    "type": "edge_case",
+    "query": "",
+    "expected_fallback": true,
+    "description": "Edge case - empty query"
+  },
+  {
+    "id": "tc_022",
+    "type": "edge_case",
+    "query": "admission",
+    "expected_keywords": "admission",
+    "expected_fallback": false,
+    "description": "Edge case - single word query"
+  },
+  {
+    "id": "tc_023",
+    "type": "edge_case",
+    "query": "ADMISSION PROCESS FOR FYJC",
+    "expected_keywords": "admission",
+    "expected_fallback": false,
+    "description": "Edge case - all caps query"
+  },
+  {
+    "id": "tc_024",
+    "type": "edge_case",
+    "query": "  admission   process   ",
+    "expected_keywords": "admission",
+    "expected_fallback": false,
+    "description": "Edge case - extra whitespace"
+  },
+  {
+    "id": "tc_025",
+    "type": "multilingual",
+    "query": "नोंदणी कशी करावी?",
+    "expected_keywords": "प्रवेश",
+    "expected_fallback": false,
+    "description": "Marathi query about registration"
+  },
+  {
+    "id": "tc_026",
+    "type": "multilingual",
+    "query": "पंजीकरण कैसे करें?",
+    "expected_keywords": "प्रवेश",
+    "expected_fallback": false,
+    "description": "Hindi query about registration"
+  },
+  {
+    "id": "tc_027",
+    "type": "multilingual",
+    "query": "Online registration compulsory hai kya?",
+    "expected_keywords": "online",
+    "expected_fallback": false,
+    "description": "Hinglish query about online registration"
+  },
+  {
+    "id": "tc_028",
+    "type": "specific",
+    "query": "What is the fee for FYJC admission?",
+    "expected_keywords": "fee",
+    "expected_fallback": false,
+    "description": "English query about admission fee"
+  },
+  {
+    "id": "tc_029",
+    "type": "specific",
+    "query": "FYJC admission fee kitna hai?",
+    "expected_keywords": "fee",
+    "expected_fallback": false,
+    "description": "Hinglish query about admission fee"
+  },
+  {
+    "id": "tc_030",
+    "type": "specific",
+    "query": "Is there a scholarship available for FYJC?",
+    "expected_keywords": "scholarship",
+    "expected_fallback": false,
+    "description": "English query about scholarships"
+  },
+  {
+    "id": "tc_031",
+    "type": "stress",
+    "query": "Tell me everything about FYJC admission process, quota types, documents required, eligibility criteria, important dates, and how to apply online step by step",
+    "expected_keywords": "admission",
+    "expected_fallback": false,
+    "description": "Long complex query"
+  },
+  {
+    "id": "tc_032",
+    "type": "stress",
+    "query": "admission admission admission admission admission admission admission admission admission admission",
+    "expected_keywords": "admission",
+    "expected_fallback": false,
+    "description": "Repetitive query"
+  },
+  {
+    "id": "tc_033",
+    "type": "special_chars",
+    "query": "What is FYJC??? Is it important!!!",
+    "expected_keywords": "admission",
+    "expected_fallback": false,
+    "description": "Query with special characters"
+  },
+  {
+    "id": "tc_034",
+    "type": "special_chars",
+    "query": "FYJC admission... tell me more",
+    "expected_keywords": "admission",
+    "expected_fallback": false,
+    "description": "Query with ellipsis"
+  },
+  {
+    "id": "tc_035",
+    "type": "mixed",
+    "query": "FYJC म्हणजे काय? What is the process?",
+    "expected_keywords": "admission",
+    "expected_fallback": false,
+    "description": "Mixed language query (Marathi + English)"
+  },
+  {
+    "id": "tc_036",
+    "type": "mixed",
+    "query": "Admission process बताओ FYJC का",
+    "expected_keywords": "admission",
+    "expected_fallback": false,
+    "description": "Mixed language query (Hindi + English)"
+  },
+  {
+    "id": "tc_037",
+    "type": "typo",
+    "query": "FYJC addmission proccess",
+    "expected_keywords": "admission",
+    "expected_fallback": false,
+    "description": "Query with typos"
+  },
+  {
+    "id": "tc_038",
+    "type": "typo",
+    "query": "11th addmision kaise hota hai?",
+    "expected_keywords": "admission",
+    "expected_fallback": false,
+    "description": "Hinglish query with typos"
+  },
+  {
+    "id": "tc_039",
+    "type": "abbreviation",
+    "query": "What is CAP round?",
+    "expected_keywords": "round",
+    "expected_fallback": false,
+    "description": "Query about CAP round"
+  },
+  {
+    "id": "tc_040",
+    "type": "abbreviation",
+    "query": "What is DTE approval?",
+    "expected_keywords": "approval",
+    "expected_fallback": false,
+    "description": "Query about DTE"
+  }
+]

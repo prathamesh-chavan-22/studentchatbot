@@ -1,0 +1,217 @@
+[
+  {
+    "id": 1,
+    "category": "Single-turn English",
+    "turns": [
+      {"message": "What is FYJC?", "expected_keywords": ["11th", "admission", "Maharashtra"]}
+    ]
+  },
+  {
+    "id": 2,
+    "category": "Single-turn English",
+    "turns": [
+      {"message": "How to register for admission?", "expected_keywords": ["Student Registration", "webportal", "password"]}
+    ]
+  },
+  {
+    "id": 3,
+    "category": "Single-turn English",
+    "turns": [
+      {"message": "What documents are needed for registration?", "expected_keywords": ["10th", "marksheet", "Leaving Certificate"]}
+    ]
+  },
+  {
+    "id": 4,
+    "category": "Single-turn English",
+    "turns": [
+      {"message": "Is online registration compulsory?", "expected_keywords": ["Yes", "mandatory", "offline"]}
+    ]
+  },
+  {
+    "id": 5,
+    "category": "Single-turn English",
+    "turns": [
+      {"message": "How many colleges can I list in my preferences?", "expected_keywords": ["minimum 1", "maximum 10"]}
+    ]
+  },
+  {
+    "id": 6,
+    "category": "Single-turn English",
+    "turns": [
+      {"message": "Can I edit my form after submission?", "expected_keywords": ["Unlock Form", "before verification"]}
+    ]
+  },
+  {
+    "id": 7,
+    "category": "Single-turn English",
+    "turns": [
+      {"message": "What is the helpline number?", "expected_keywords": ["8530955564"]}
+    ]
+  },
+  {
+    "id": 8,
+    "category": "Single-turn English",
+    "turns": [
+      {"message": "I am from another board, can I apply?", "expected_keywords": ["Other boards", "marks", "verify"]}
+    ]
+  },
+  {
+    "id": 9,
+    "category": "Single-turn English",
+    "turns": [
+      {"message": "What is ATKT?", "expected_keywords": ["Allowed to Keep Terms", "1 or 2 subjects"]}
+    ]
+  },
+  {
+    "id": 10,
+    "category": "Single-turn English",
+    "turns": [
+      {"message": "What are the quota types?", "expected_keywords": ["In-house", "Management", "Minority"]}
+    ]
+  },
+  {
+    "id": 11,
+    "category": "Single-turn Marathi",
+    "turns": [
+      {"message": "FYJC म्हणजे काय?", "expected_keywords": ["११ वी", "प्रवेश", "महाराष्ट्र"]}
+    ]
+  },
+  {
+    "id": 12,
+    "category": "Single-turn Marathi",
+    "turns": [
+      {"message": "प्रवेशासाठी नोंदणी कशी करावी?", "expected_keywords": ["Student Registration", "वेबपोर्टल", "पासवर्ड"]}
+    ]
+  },
+  {
+    "id": 13,
+    "category": "Single-turn Marathi",
+    "turns": [
+      {"message": "नोंदणीसाठी कोणती कागदपत्रे लागतात?", "expected_keywords": ["१० वी", "गुणपत्रक", "दाखला"]}
+    ]
+  },
+  {
+    "id": 14,
+    "category": "Single-turn Marathi",
+    "turns": [
+      {"message": "ऑनलाईन नोंदणी अनिवार्य आहे का?", "expected_keywords": ["होय", "बंधनकारक", "ऑफलाईन"]}
+    ]
+  },
+  {
+    "id": 15,
+    "category": "Single-turn Marathi",
+    "turns": [
+      {"message": "मी किती महाविद्यालयांची नावे देऊ शकतो?", "expected_keywords": ["किमान १", "जास्तीत जास्त १०"]}
+    ]
+  },
+  {
+    "id": 16,
+    "category": "Single-turn Marathi",
+    "turns": [
+      {"message": "फॉर्म भरल्यावर त्यात बदल करता येतो का?", "expected_keywords": ["Unlock Form", "दुरुस्ती"]}
+    ]
+  },
+  {
+    "id": 17,
+    "category": "Single-turn Marathi",
+    "turns": [
+      {"message": "हेल्पलाईन नंबर काय आहे?", "expected_keywords": ["8530955564"]}
+    ]
+  },
+  {
+    "id": 18,
+    "category": "Single-turn Marathi",
+    "turns": [
+      {"message": "मी दुसऱ्या बोर्डाचा विद्यार्थी आहे, मी अर्ज करू शकतो का?", "expected_keywords": ["इतर मंडळ", "वेबसाइट", "गुण"]}
+    ]
+  },
+  {
+    "id": 19,
+    "category": "Single-turn Marathi",
+    "turns": [
+      {"message": "ATKT म्हणजे काय?", "expected_keywords": ["सवलत", "१ किंवा २ विषय", "नापास"]}
+    ]
+  },
+  {
+    "id": 20,
+    "category": "Single-turn Marathi",
+    "turns": [
+      {"message": "कोटा प्रकार कोणते आहेत?", "expected_keywords": ["इन-हाऊस", "व्यवस्थापन", "अल्पसंख्याक"]}
+    ]
+  },
+  {
+    "id": 21,
+    "category": "Multi-turn English",
+    "turns": [
+      {"message": "How to register?", "expected_keywords": ["Student Registration"]},
+      {"message": "What documents are needed for it?", "expected_keywords": ["10th", "Leaving Certificate"]}
+    ]
+  },
+  {
+    "id": 22,
+    "category": "Multi-turn English",
+    "turns": [
+      {"message": "What is ATKT?", "expected_keywords": ["Allowed to Keep Terms"]},
+      {"message": "Can I apply for science stream with it?", "expected_keywords": ["40%", "Science"]}
+    ]
+  },
+  {
+    "id": 23,
+    "category": "Multi-turn English",
+    "turns": [
+      {"message": "Tell me about quotas.", "expected_keywords": ["In-house", "Management"]},
+      {"message": "What about minority quota?", "expected_keywords": ["50%"]}
+    ]
+  },
+  {
+    "id": 24,
+    "category": "Multi-turn Marathi",
+    "turns": [
+      {"message": "नोंदणी कशी करायची?", "expected_keywords": ["नोंदणी", "वेबपोर्टल"]},
+      {"message": "कागदपत्रे काय लागतील?", "expected_keywords": ["१० वी", "गुणपत्रक"]}
+    ]
+  },
+  {
+    "id": 25,
+    "category": "Multi-turn Marathi",
+    "turns": [
+      {"message": "ATKT बद्दल सांगा.", "expected_keywords": ["सवलत"]},
+      {"message": "विज्ञान शाखेत प्रवेश मिळेल का?", "expected_keywords": ["४०%", "विज्ञान"]}
+    ]
+  },
+  {
+    "id": 26,
+    "category": "Guardrails",
+    "turns": [
+      {"message": "How to cook pasta?", "expected_keywords": ["I can only assist", "FYJC"]}
+    ]
+  },
+  {
+    "id": 27,
+    "category": "Guardrails",
+    "turns": [
+      {"message": "What is the capital of France?", "expected_keywords": ["I can only assist", "FYJC"]}
+    ]
+  },
+  {
+    "id": 28,
+    "category": "Greetings",
+    "turns": [
+      {"message": "Hi", "expected_keywords": ["hello", "how can I help"]}
+    ]
+  },
+  {
+    "id": 29,
+    "category": "Greetings",
+    "turns": [
+      {"message": "Namaste", "expected_keywords": ["namaste", "कशी मदत करू शकतो"]}
+    ]
+  },
+  {
+    "id": 30,
+    "category": "Greetings",
+    "turns": [
+      {"message": "Good morning", "expected_keywords": ["good morning"]}
+    ]
+  }
+]

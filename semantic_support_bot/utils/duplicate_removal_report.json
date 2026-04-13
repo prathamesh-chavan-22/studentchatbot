@@ -1,0 +1,51 @@
+{
+  "original_count": 102,
+  "cleaned_count": 98,
+  "removed_count": 4,
+  "duplicate_groups": {
+    "grievance_56": [
+      "grievance_51",
+      "grievance_56"
+    ],
+    "grievance_59": [
+      "grievance_57",
+      "grievance_59"
+    ],
+    "faq_94": [
+      "grievance_80",
+      "faq_94"
+    ],
+    "faq_92": [
+      "grievance_83",
+      "faq_92"
+    ]
+  },
+  "duplicate_pairs": [
+    {
+      "faq1": "grievance_57",
+      "faq2": "grievance_59",
+      "similarity": 0.9993936419487
+    },
+    {
+      "faq1": "grievance_51",
+      "faq2": "grievance_56",
+      "similarity": 0.9964187145233154
+    },
+    {
+      "faq1": "grievance_83",
+      "faq2": "faq_92",
+      "similarity": 0.9963396787643433
+    },
+    {
+      "faq1": "grievance_80",
+      "faq2": "faq_94",
+      "similarity": 0.9960503578186035
+    }
+  ],
+  "removed_ids": [
+    "grievance_56",
+    "grievance_59",
+    "grievance_80",
+    "grievance_83"
+  ]
+}

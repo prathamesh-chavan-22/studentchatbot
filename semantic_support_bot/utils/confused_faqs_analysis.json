@@ -1,0 +1,382 @@
+{
+  "top_confused_pairs": [
+    {
+      "faq1": "grievance_57",
+      "faq2": "grievance_59",
+      "similarity": 0.9993937015533447
+    },
+    {
+      "faq1": "grievance_51",
+      "faq2": "grievance_56",
+      "similarity": 0.9964187145233154
+    },
+    {
+      "faq1": "grievance_83",
+      "faq2": "faq_92",
+      "similarity": 0.9963396787643433
+    },
+    {
+      "faq1": "grievance_80",
+      "faq2": "faq_94",
+      "similarity": 0.9960504174232483
+    },
+    {
+      "faq1": "grievance_69",
+      "faq2": "grievance_80",
+      "similarity": 0.9947409629821777
+    },
+    {
+      "faq1": "grievance_51",
+      "faq2": "grievance_53",
+      "similarity": 0.9944883584976196
+    },
+    {
+      "faq1": "grievance_57",
+      "faq2": "grievance_60",
+      "similarity": 0.9936506152153015
+    },
+    {
+      "faq1": "grievance_59",
+      "faq2": "grievance_60",
+      "similarity": 0.9934954643249512
+    },
+    {
+      "faq1": "faq_36",
+      "faq2": "faq_102",
+      "similarity": 0.9934829473495483
+    },
+    {
+      "faq1": "grievance_79",
+      "faq2": "grievance_86",
+      "similarity": 0.9933955669403076
+    },
+    {
+      "faq1": "grievance_55",
+      "faq2": "grievance_60",
+      "similarity": 0.9933820366859436
+    },
+    {
+      "faq1": "grievance_53",
+      "faq2": "grievance_56",
+      "similarity": 0.9930077195167542
+    },
+    {
+      "faq1": "grievance_73",
+      "faq2": "grievance_87",
+      "similarity": 0.9923535585403442
+    },
+    {
+      "faq1": "grievance_69",
+      "faq2": "faq_94",
+      "similarity": 0.9916515350341797
+    },
+    {
+      "faq1": "grievance_65",
+      "faq2": "grievance_86",
+      "similarity": 0.9914447069168091
+    },
+    {
+      "faq1": "grievance_55",
+      "faq2": "grievance_63",
+      "similarity": 0.9910796284675598
+    },
+    {
+      "faq1": "grievance_51",
+      "faq2": "grievance_86",
+      "similarity": 0.9910127520561218
+    },
+    {
+      "faq1": "grievance_55",
+      "faq2": "grievance_59",
+      "similarity": 0.9907675385475159
+    },
+    {
+      "faq1": "grievance_55",
+      "faq2": "grievance_57",
+      "similarity": 0.9904847741127014
+    },
+    {
+      "faq1": "grievance_62",
+      "faq2": "grievance_76",
+      "similarity": 0.990466833114624
+    },
+    {
+      "faq1": "grievance_66",
+      "faq2": "grievance_73",
+      "similarity": 0.9904306530952454
+    },
+    {
+      "faq1": "grievance_52",
+      "faq2": "grievance_75",
+      "similarity": 0.9902793765068054
+    },
+    {
+      "faq1": "grievance_75",
+      "faq2": "grievance_80",
+      "similarity": 0.9901962876319885
+    },
+    {
+      "faq1": "grievance_56",
+      "faq2": "grievance_86",
+      "similarity": 0.9898078441619873
+    },
+    {
+      "faq1": "grievance_63",
+      "faq2": "grievance_64",
+      "similarity": 0.9897753000259399
+    },
+    {
+      "faq1": "grievance_51",
+      "faq2": "grievance_65",
+      "similarity": 0.9895354509353638
+    },
+    {
+      "faq1": "grievance_51",
+      "faq2": "grievance_79",
+      "similarity": 0.9889059066772461
+    },
+    {
+      "faq1": "grievance_56",
+      "faq2": "grievance_79",
+      "similarity": 0.9889021515846252
+    },
+    {
+      "faq1": "grievance_52",
+      "faq2": "grievance_54",
+      "similarity": 0.9884277582168579
+    },
+    {
+      "faq1": "grievance_67",
+      "faq2": "grievance_85",
+      "similarity": 0.9883936047554016
+    },
+    {
+      "faq1": "faq_20",
+      "faq2": "faq_99",
+      "similarity": 0.9883825182914734
+    },
+    {
+      "faq1": "grievance_53",
+      "faq2": "grievance_86",
+      "similarity": 0.9882760047912598
+    },
+    {
+      "faq1": "grievance_75",
+      "faq2": "faq_94",
+      "similarity": 0.9881249666213989
+    },
+    {
+      "faq1": "faq_21",
+      "faq2": "faq_36",
+      "similarity": 0.9880911111831665
+    },
+    {
+      "faq1": "grievance_55",
+      "faq2": "grievance_64",
+      "similarity": 0.9877172708511353
+    },
+    {
+      "faq1": "grievance_82",
+      "faq2": "grievance_85",
+      "similarity": 0.9876326322555542
+    },
+    {
+      "faq1": "grievance_50",
+      "faq2": "grievance_73",
+      "similarity": 0.9875713586807251
+    },
+    {
+      "faq1": "grievance_52",
+      "faq2": "grievance_80",
+      "similarity": 0.9875549077987671
+    },
+    {
+      "faq1": "grievance_53",
+      "faq2": "grievance_79",
+      "similarity": 0.9874520301818848
+    },
+    {
+      "faq1": "grievance_81",
+      "faq2": "grievance_84",
+      "similarity": 0.9873039722442627
+    },
+    {
+      "faq1": "grievance_50",
+      "faq2": "grievance_66",
+      "similarity": 0.9872997999191284
+    },
+    {
+      "faq1": "grievance_66",
+      "faq2": "grievance_87",
+      "similarity": 0.9872345328330994
+    },
+    {
+      "faq1": "grievance_60",
+      "faq2": "grievance_63",
+      "similarity": 0.9870709776878357
+    },
+    {
+      "faq1": "grievance_82",
+      "faq2": "grievance_86",
+      "similarity": 0.9870445728302002
+    },
+    {
+      "faq1": "grievance_49",
+      "faq2": "grievance_78",
+      "similarity": 0.9870185852050781
+    },
+    {
+      "faq1": "grievance_60",
+      "faq2": "grievance_64",
+      "similarity": 0.9867082238197327
+    },
+    {
+      "faq1": "faq_21",
+      "faq2": "faq_98",
+      "similarity": 0.9866703748703003
+    },
+    {
+      "faq1": "grievance_52",
+      "faq2": "faq_94",
+      "similarity": 0.9862751364707947
+    },
+    {
+      "faq1": "grievance_55",
+      "faq2": "grievance_77",
+      "similarity": 0.9862379431724548
+    },
+    {
+      "faq1": "grievance_50",
+      "faq2": "grievance_87",
+      "similarity": 0.9861351251602173
+    }
+  ],
+  "cross_language_sims": {
+    "en_mr": {
+      "mean": 0.940148651599884,
+      "std": 0.008753408677875996
+    },
+    "en_hi": {
+      "mean": 0.9924773573875427,
+      "std": 0.00814745295792818
+    },
+    "en_hinglish": {
+      "mean": 0.9703736305236816,
+      "std": 0.007383076939731836
+    },
+    "mr_hi": {
+      "mean": 0.949476957321167,
+      "std": 0.008236533030867577
+    },
+    "mr_hinglish": {
+      "mean": 0.9283983707427979,
+      "std": 0.009906942024827003
+    },
+    "hi_hinglish": {
+      "mean": 0.9799478054046631,
+      "std": 0.011418536305427551
+    }
+  },
+  "most_diverse_faqs": [
+    {
+      "faq_id": "faq_40",
+      "avg_intra_similarity": 0.8442433476448059,
+      "num_questions": 48
+    },
+    {
+      "faq_id": "faq_13",
+      "avg_intra_similarity": 0.8448339104652405,
+      "num_questions": 52
+    },
+    {
+      "faq_id": "faq_8",
+      "avg_intra_similarity": 0.8498287200927734,
+      "num_questions": 53
+    },
+    {
+      "faq_id": "faq_12",
+      "avg_intra_similarity": 0.8505052924156189,
+      "num_questions": 52
+    },
+    {
+      "faq_id": "faq_20",
+      "avg_intra_similarity": 0.8506729602813721,
+      "num_questions": 52
+    },
+    {
+      "faq_id": "faq_9",
+      "avg_intra_similarity": 0.853221595287323,
+      "num_questions": 53
+    },
+    {
+      "faq_id": "faq_10",
+      "avg_intra_similarity": 0.8566553592681885,
+      "num_questions": 53
+    },
+    {
+      "faq_id": "faq_14",
+      "avg_intra_similarity": 0.8574603796005249,
+      "num_questions": 51
+    },
+    {
+      "faq_id": "faq_1",
+      "avg_intra_similarity": 0.8607583045959473,
+      "num_questions": 47
+    },
+    {
+      "faq_id": "faq_19",
+      "avg_intra_similarity": 0.8618748784065247,
+      "num_questions": 52
+    },
+    {
+      "faq_id": "faq_6",
+      "avg_intra_similarity": 0.8620410561561584,
+      "num_questions": 53
+    },
+    {
+      "faq_id": "faq_24",
+      "avg_intra_similarity": 0.8634357452392578,
+      "num_questions": 52
+    },
+    {
+      "faq_id": "faq_35",
+      "avg_intra_similarity": 0.863675594329834,
+      "num_questions": 48
+    },
+    {
+      "faq_id": "grievance_56",
+      "avg_intra_similarity": 0.8639748096466064,
+      "num_questions": 48
+    },
+    {
+      "faq_id": "faq_25",
+      "avg_intra_similarity": 0.8649501204490662,
+      "num_questions": 48
+    },
+    {
+      "faq_id": "faq_23",
+      "avg_intra_similarity": 0.865155041217804,
+      "num_questions": 52
+    },
+    {
+      "faq_id": "faq_28",
+      "avg_intra_similarity": 0.8657238483428955,
+      "num_questions": 48
+    },
+    {
+      "faq_id": "faq_42",
+      "avg_intra_similarity": 0.8668412566184998,
+      "num_questions": 48
+    },
+    {
+      "faq_id": "faq_2",
+      "avg_intra_similarity": 0.8678790330886841,
+      "num_questions": 47
+    },
+    {
+      "faq_id": "grievance_51",
+      "avg_intra_similarity": 0.8680976033210754,
+      "num_questions": 48
+    }
+  ]
+}

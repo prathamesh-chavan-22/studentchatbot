@@ -1,0 +1,702 @@
+[
+  {
+    "id": "paraphrase_21",
+    "type": "paraphrase",
+    "query": "Please explain part 2 form not opening, why?",
+    "expected_keywords": "Please ensure that you have lo",
+    "lang": "en"
+  },
+  {
+    "id": "exact_40",
+    "type": "exact",
+    "query": "How to unlock form for editing?",
+    "expected_keywords": "Yes, before your application is verified, you can ",
+    "lang": "en"
+  },
+  {
+    "id": "typo_1",
+    "type": "typo",
+    "query": "admisoin process",
+    "expected_keywords": "admission",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_11",
+    "type": "paraphrase",
+    "query": "Can you tell me how to withdraw my application?",
+    "expected_keywords": "To withdraw a form, please log",
+    "lang": "en"
+  },
+  {
+    "id": "exact_11",
+    "type": "exact",
+    "query": "Inhouse quota option nahi dikh raha?",
+    "expected_keywords": "कृपया सुनिश्चित करें कि आपने Part 1 में Category &",
+    "lang": "hinglish"
+  },
+  {
+    "id": "paraphrase_15",
+    "type": "paraphrase",
+    "query": "Can you tell me steps to confirm admission?",
+    "expected_keywords": "No. You must click 'Proceed fo",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_29",
+    "type": "paraphrase",
+    "query": "I want to know can i edit my application form after registration?",
+    "expected_keywords": "Yes, before your application i",
+    "lang": "en"
+  },
+  {
+    "id": "exact_10",
+    "type": "exact",
+    "query": "What if I forget my Login details?",
+    "expected_keywords": "Use the 'Forgot Password' option on the portal or ",
+    "lang": "en"
+  },
+  {
+    "id": "typo_8",
+    "type": "typo",
+    "query": "how many rond",
+    "expected_keywords": "round",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_2",
+    "type": "paraphrase",
+    "query": "How does it work: science stream medium appears as marathi but should be english?",
+    "expected_keywords": "The medium shown is the school",
+    "lang": "en"
+  },
+  {
+    "id": "exact_33",
+    "type": "exact",
+    "query": "Freedom Fighter ward ke liye kya documents chahiye?",
+    "expected_keywords": "जिला कलेक्टर से प्रमाण पत्र और नामांकन आवश्यक है।",
+    "lang": "hinglish"
+  },
+  {
+    "id": "paraphrase_4",
+    "type": "paraphrase",
+    "query": "I want to know my application part 1 is locked, but it has some errors or i want to change some information, can i unlock it and make changes? or i am not able to see part 2, what should i do for that?",
+    "expected_keywords": "Before locking application Par",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_6",
+    "type": "paraphrase",
+    "query": "How does it work: how to withdraw from the admission process?",
+    "expected_keywords": "Use the 'Withdrawal of applica",
+    "lang": "en"
+  },
+  {
+    "id": "exact_24",
+    "type": "exact",
+    "query": "FF आरक्षण कसे मिळवावे?",
+    "expected_keywords": "स्वातंत्र्य सैनिकांच्या पाल्यांना आरक्षणाचा लाभ घ्",
+    "lang": "mr"
+  },
+  {
+    "id": "paraphrase_28",
+    "type": "paraphrase",
+    "query": "I want to know maximum and minimum college choices?",
+    "expected_keywords": "A student can list a minimum o",
+    "lang": "en"
+  },
+  {
+    "id": "typo_6",
+    "type": "typo",
+    "query": "doucmnt requried",
+    "expected_keywords": "document",
+    "lang": "en"
+  },
+  {
+    "id": "exact_28",
+    "type": "exact",
+    "query": "Application me problem ho toh kahan contact karein?",
+    "expected_keywords": "आप अपने स्कूल, मार्गदर्शन केंद्र, हेल्पलाइन (85309",
+    "lang": "hinglish"
+  },
+  {
+    "id": "paraphrase_27",
+    "type": "paraphrase",
+    "query": "How does it work: i'm facing issues with payment validation while trying to fill out my form. despite successful transactions, the system shows a \"validate payment\" option, and i'm unable to proceed. what should i do?",
+    "expected_keywords": "Please wait for 1 to 3 hours a",
+    "lang": "en"
+  },
+  {
+    "id": "typo_4",
+    "type": "typo",
+    "query": "how to aplic",
+    "expected_keywords": "apply",
+    "lang": "en"
+  },
+  {
+    "id": "exact_27",
+    "type": "exact",
+    "query": "मैं आवेदन फॉर्म के Part 2 तक पहुंचने/खोजने में असमर्थ हूँ, मुझे क्या करना चाहिए?",
+    "expected_keywords": "कृपया सुनिश्चित करें कि आपने अपने Part 1 फॉर्म को ",
+    "lang": "hi"
+  },
+  {
+    "id": "exact_31",
+    "type": "exact",
+    "query": "What if an Open School student doesn't have a Leaving Certificate?",
+    "expected_keywords": "NIOS students should use their passing certificate",
+    "lang": "en"
+  },
+  {
+    "id": "typo_5",
+    "type": "typo",
+    "query": "eligibilty for 11th",
+    "expected_keywords": "eligibility",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_20",
+    "type": "paraphrase",
+    "query": "How does it work: steps to confirm admission?",
+    "expected_keywords": "No. You must click 'Proceed fo",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_26",
+    "type": "paraphrase",
+    "query": "Tell me about i am facing technical issues such as errors, missing selections, or data not found while trying to access or fill out the fyjc form. what should i do to resolve these issues?",
+    "expected_keywords": "If you are facing any technica",
+    "lang": "en"
+  },
+  {
+    "id": "exact_38",
+    "type": "exact",
+    "query": "प्रवेश घेतल्यानंतर रद्द करता येते का?",
+    "expected_keywords": "होय. प्रवेश प्रक्रिया चालू असताना कोणत्याही टप्प्य",
+    "lang": "mr"
+  },
+  {
+    "id": "exact_1",
+    "type": "exact",
+    "query": "माझ्या 10 वी च्या प्रमाणपत्राची आणि लीविंग सर्टिफिकेटची माहिती अद्यतनित करणे किंवा बदलणे कसे करावे?",
+    "expected_keywords": "तुमच्या 10 वी च्या प्रमाणपत्राची आणि लीविंग सर्टिफ",
+    "lang": "mr"
+  },
+  {
+    "id": "exact_7",
+    "type": "exact",
+    "query": "Can I participate in more than one round?",
+    "expected_keywords": "Yes, you can participate in each round until you g",
+    "lang": "en"
+  },
+  {
+    "id": "exact_16",
+    "type": "exact",
+    "query": "Kya Arts/Sports ke extra marks Best 5 me judenge?",
+    "expected_keywords": "नहीं, केवल 10वीं की मार्कशीट के मुख्य 'बेस्ट 5' वि",
+    "lang": "hinglish"
+  },
+  {
+    "id": "exact_37",
+    "type": "exact",
+    "query": "Admission cancel karne ka process kya hai?",
+    "expected_keywords": "सुनिश्चित करें कि आप admitted हैं फिर admitted col",
+    "lang": "hinglish"
+  },
+  {
+    "id": "exact_3",
+    "type": "exact",
+    "query": "मी नोंदणीच्या वेळी चुकीचे १० वी किंवा समकक्ष परीक्षा मंडळ निवडले. मी ते आता कसे बदलू शकतो?",
+    "expected_keywords": "कृपया फॉर्म मागे घ्या आणि पुन्हा नोंदणी करा, कारण ",
+    "lang": "mr"
+  },
+  {
+    "id": "paraphrase_3",
+    "type": "paraphrase",
+    "query": "Please explain how many rounds are conducted for admission?",
+    "expected_keywords": "Four regular rounds followed b",
+    "lang": "en"
+  },
+  {
+    "id": "typo_2",
+    "type": "typo",
+    "query": "colleg preference",
+    "expected_keywords": "preference",
+    "lang": "en"
+  },
+  {
+    "id": "exact_35",
+    "type": "exact",
+    "query": "NRI/OCI विद्यार्थ्यांसाठी कागदपत्रे?",
+    "expected_keywords": "संबंधित देशातील भारतीय दूतावासाच्या अधिकाऱ्यांचे स",
+    "lang": "mr"
+  },
+  {
+    "id": "exact_22",
+    "type": "exact",
+    "query": "प्रवेश घेतल्यानंतर रद्द करता येते का?",
+    "expected_keywords": "होय. प्रवेश प्रक्रिया चालू असताना कोणत्याही टप्प्य",
+    "lang": "mr"
+  },
+  {
+    "id": "paraphrase_24",
+    "type": "paraphrase",
+    "query": "Tell me about my account is debited but the payment is still pending and no receipt is generated, please guide me.",
+    "expected_keywords": "If you encounter any issues af",
+    "lang": "en"
+  },
+  {
+    "id": "short_2",
+    "type": "short",
+    "query": "Fee",
+    "expected_keywords": "fee",
+    "lang": "en"
+  },
+  {
+    "id": "exact_17",
+    "type": "exact",
+    "query": "खिलाड़ियों के लिए किन दस्तावेजों की आवश्यकता है?",
+    "expected_keywords": "खिलाड़ी आरक्षण के लिए जिला खेल अधिकारी द्वारा प्रम",
+    "lang": "hi"
+  },
+  {
+    "id": "exact_6",
+    "type": "exact",
+    "query": "FYJC form me technical errors aa rahe hain?",
+    "expected_keywords": "यदि आप किसी तकनीकी समस्या का सामना कर रहे हैं, तो ",
+    "lang": "hinglish"
+  },
+  {
+    "id": "irrelevant_5",
+    "type": "out_of_scope",
+    "query": "What is 2+2?",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "exact_18",
+    "type": "exact",
+    "query": "कक्षा 11वीं (FYJC) ऑनलाइन प्रवेश प्रक्रिया क्या है?",
+    "expected_keywords": "यह महाराष्ट्र राज्य में राज्य बोर्ड से संबद्ध उच्च",
+    "lang": "hi"
+  },
+  {
+    "id": "typo_7",
+    "type": "typo",
+    "query": "forget pasword",
+    "expected_keywords": "forgot password",
+    "lang": "en"
+  },
+  {
+    "id": "typo_9",
+    "type": "typo",
+    "query": "quota seet",
+    "expected_keywords": "quota",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_13",
+    "type": "paraphrase",
+    "query": "I want to know where to download allotment letter?",
+    "expected_keywords": "Please log in to your account ",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_19",
+    "type": "paraphrase",
+    "query": "Tell me about i'm facing issues with payment validation while trying to fill out my form. despite successful transactions, the system shows a \"validate payment\" option, and i'm unable to proceed. what should i do?",
+    "expected_keywords": "Please wait for 1 to 3 hours a",
+    "lang": "en"
+  },
+  {
+    "id": "short_5",
+    "type": "short",
+    "query": "Help",
+    "expected_keywords": "help",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_22",
+    "type": "paraphrase",
+    "query": "I want to know i want information and help regarding my 11th and 12th admission",
+    "expected_keywords": "If you experience any issues i",
+    "lang": "en"
+  },
+  {
+    "id": "typo_3",
+    "type": "typo",
+    "query": "registrasion fee",
+    "expected_keywords": "registration",
+    "lang": "en"
+  },
+  {
+    "id": "exact_39",
+    "type": "exact",
+    "query": "वेगवेगळ्या डिव्हाइसवरून आणि रिफ्रेश करूनही Part 2 CAP राउंड दिसत नाही, मी काय करावे?",
+    "expected_keywords": "कृपया पुन्हा लॉगिन करा, तुमचा Part 1 फॉर्म लॉक केल",
+    "lang": "mr"
+  },
+  {
+    "id": "irrelevant_6",
+    "type": "out_of_scope",
+    "query": "Where can I buy shoes?",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_18",
+    "type": "paraphrase",
+    "query": "I want to know i am facing issues while selecting and saving college preferences, such as being unable to select more than one college, error messages like \"requested choice code did not match\", and my preferences not being saved. what should i do to resolve this issue?",
+    "expected_keywords": "Please try again after some ti",
+    "lang": "en"
+  },
+  {
+    "id": "exact_13",
+    "type": "exact",
+    "query": "Kya Arts/Sports ke extra marks Best 5 me judenge?",
+    "expected_keywords": "नहीं, केवल 10वीं की मार्कशीट के मुख्य 'बेस्ट 5' वि",
+    "lang": "hinglish"
+  },
+  {
+    "id": "exact_23",
+    "type": "exact",
+    "query": "फेरीनुसार प्रवेश प्रक्रिया स्पष्ट करा",
+    "expected_keywords": "चार नियमित फेऱ्या व त्यानंतर सर्वांसाठी खुली फेरी ",
+    "lang": "mr"
+  },
+  {
+    "id": "short_4",
+    "type": "short",
+    "query": "Documents",
+    "expected_keywords": "documents",
+    "lang": "en"
+  },
+  {
+    "id": "exact_29",
+    "type": "exact",
+    "query": "Allotment नंतर admission कसा घ्यावा?",
+    "expected_keywords": "कृपया तुमच्या खात्यात लॉगिन करा आणि अर्ज डॅशबोर्डव",
+    "lang": "mr"
+  },
+  {
+    "id": "exact_34",
+    "type": "exact",
+    "query": "I have entered an incorrect seat number during the registration process for FYJC admission. What steps can I take to correct this error and ensure my application is processed accurately?",
+    "expected_keywords": "You can also re-register with the correct seat num",
+    "lang": "en"
+  },
+  {
+    "id": "irrelevant_10",
+    "type": "out_of_scope",
+    "query": "Translate 'Hello' to French",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_5",
+    "type": "paraphrase",
+    "query": "Please explain who is eligible for fyjc?",
+    "expected_keywords": "Students who have passed the 1",
+    "lang": "en"
+  },
+  {
+    "id": "irrelevant_12",
+    "type": "out_of_scope",
+    "query": "IPL scores",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "typo_10",
+    "type": "typo",
+    "query": "onlin registr",
+    "expected_keywords": "online registration",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_8",
+    "type": "paraphrase",
+    "query": "Please explain can i cancel my admission?",
+    "expected_keywords": "Yes, you can cancel your admis",
+    "lang": "en"
+  },
+  {
+    "id": "exact_4",
+    "type": "exact",
+    "query": "मुझे अपने कॉलेज वरीयताओं का चयन या लॉक करने में समस्याएं आ रही हैं, जैसे कि विकल्प उपलब्ध न होना, कॉलेज के नाम न दिखाई देना, या लॉगिन समस्याएं। इस समस्या को हल करने के लिए मुझे क्या करना चाहिए?",
+    "expected_keywords": "कृपया कुछ समय बाद फिर से लॉग इन करने का प्रयास करे",
+    "lang": "hi"
+  },
+  {
+    "id": "exact_8",
+    "type": "exact",
+    "query": "Admission rounds kab hote hain?",
+    "expected_keywords": "चार नियमित राउंड और उसके बाद एक 'ओपन टू ऑल' राउंड।",
+    "lang": "hinglish"
+  },
+  {
+    "id": "paraphrase_25",
+    "type": "paraphrase",
+    "query": "I want to know precaution for icse marks entry?",
+    "expected_keywords": "Use the top 5 marks from Group",
+    "lang": "en"
+  },
+  {
+    "id": "irrelevant_7",
+    "type": "out_of_scope",
+    "query": "Is it raining in Mumbai?",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "irrelevant_4",
+    "type": "out_of_scope",
+    "query": "How to bake a cake?",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "irrelevant_8",
+    "type": "out_of_scope",
+    "query": "Best movies in 2024",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "exact_12",
+    "type": "exact",
+    "query": "अनेक कॉलेज प्राधान्यक्रम निवडताना, पहिले निवडलेले कॉलेज यादीत दुप्पट होत आहे आणि नंतरच्या निवडी सेव्ह होत नाहीत किंवा पहिल्या कॉलेजने बदलल्या जात आहेत. कॅशे क्लिअर करणे, सिस्टम रीस्टार्ट करणे, आणि लॉग आउट आणि इन करणे यांसारखे वेगवेगळे उपाय प्रयत्न केल्यानंतरही समस्या कायम आहे. ही समस्या सोडवण्यासाठी मी काय करावे?",
+    "expected_keywords": "कृपया काही वेळाने तपासा, कारण या समस्येवर काम सुरू",
+    "lang": "mr"
+  },
+  {
+    "id": "exact_9",
+    "type": "exact",
+    "query": "College preference select aur save karne me problem aa rahi hai?",
+    "expected_keywords": "कृपया कुछ समय बाद पुनः प्रयास करें। सिस्टम को तकनी",
+    "lang": "hinglish"
+  },
+  {
+    "id": "paraphrase_16",
+    "type": "paraphrase",
+    "query": "How does it work: when can atkt students apply?",
+    "expected_keywords": "ATKT (Allowed to Keep Terms) a",
+    "lang": "en"
+  },
+  {
+    "id": "irrelevant_1",
+    "type": "out_of_scope",
+    "query": "What is the weather today?",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_12",
+    "type": "paraphrase",
+    "query": "Please explain when is 6th subject considered in cbse?",
+    "expected_keywords": "Only if a base language is fai",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_23",
+    "type": "paraphrase",
+    "query": "Please explain as an icse student, how should i fill my seat number and even after filling my school's udise number and index number, i am not getting the in-house quota option, what should i do?",
+    "expected_keywords": "You should register using your",
+    "lang": "en"
+  },
+  {
+    "id": "irrelevant_13",
+    "type": "out_of_scope",
+    "query": "Latest news",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "irrelevant_9",
+    "type": "out_of_scope",
+    "query": "How to play cricket?",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_17",
+    "type": "paraphrase",
+    "query": "I want to know can i cancel my admission?",
+    "expected_keywords": "Yes, you can cancel your admis",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_1",
+    "type": "paraphrase",
+    "query": "Can you tell me cannot apply for minority quota, what to do?",
+    "expected_keywords": "Please ensure that you have se",
+    "lang": "en"
+  },
+  {
+    "id": "short_1",
+    "type": "short",
+    "query": "Admission",
+    "expected_keywords": "admission",
+    "lang": "en"
+  },
+  {
+    "id": "exact_5",
+    "type": "exact",
+    "query": "Payment kar diya par portal par update nahi hua?",
+    "expected_keywords": "कृपया कुछ समय बाद जांचें या 4 से 24 घंटे के बाद पो",
+    "lang": "hinglish"
+  },
+  {
+    "id": "paraphrase_30",
+    "type": "paraphrase",
+    "query": "Tell me about why didn't i get admission even after filling the cap option form when seats are available in my selected colleges?",
+    "expected_keywords": "Please ensure that you have lo",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_14",
+    "type": "paraphrase",
+    "query": "How does it work: is online registration compulsory?",
+    "expected_keywords": "Yes, online registration is ma",
+    "lang": "en"
+  },
+  {
+    "id": "exact_36",
+    "type": "exact",
+    "query": "I have filled all the details but I am unable to lock the application form, what should I do?",
+    "expected_keywords": "If the application form is not locking even after ",
+    "lang": "en"
+  },
+  {
+    "id": "short_3",
+    "type": "short",
+    "query": "College",
+    "expected_keywords": "college",
+    "lang": "en"
+  },
+  {
+    "id": "exact_14",
+    "type": "exact",
+    "query": "रात्र शाळांसाठी ऑनलाईन प्रवेश आहे का?",
+    "expected_keywords": "नाही, रात्र शाळेत ऑनलाईन केंद्रीय प्रवेश प्रक्रिया",
+    "lang": "mr"
+  },
+  {
+    "id": "exact_19",
+    "type": "exact",
+    "query": "मैंने भुगतान कर दिया है, लेकिन यह वेबसाइट पर प्रतिबिंबित नहीं हो रहा है। मुझे क्या करना चाहिए?",
+    "expected_keywords": "कृपया कुछ समय बाद जांचें, बैंक समन्वय के लिए 1-4 घ",
+    "lang": "hi"
+  },
+  {
+    "id": "irrelevant_15",
+    "type": "out_of_scope",
+    "query": "What is your name?",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "exact_20",
+    "type": "exact",
+    "query": "माझा अर्ज भाग 1 लॉक झाला आहे, पण त्यात काही त्रुटी आहेत किंवा मी काही माहिती बदलणे वाहत आहे, तरी मी तो पुन्हा उघडून बदल करू शकतो का? किंवा मला भाग 2 ला पाहायला मिळत नाहीये, त्यासाठी काय करावे?",
+    "expected_keywords": "अर्ज भाग 1 लॉक करण्यापूर्वी कृपया तुमच्या अर्जाची ",
+    "lang": "mr"
+  },
+  {
+    "id": "paraphrase_9",
+    "type": "paraphrase",
+    "query": "How does it work: i have some problem with my documents, how can i resolve it?",
+    "expected_keywords": "Please provide a brief descrip",
+    "lang": "en"
+  },
+  {
+    "id": "paraphrase_10",
+    "type": "paraphrase",
+    "query": "Please explain documents for sports quota admission?",
+    "expected_keywords": "International medalists/partic",
+    "lang": "en"
+  },
+  {
+    "id": "exact_2",
+    "type": "exact",
+    "query": "Stream change kar sakte hain kya submission ke baad?",
+    "expected_keywords": "यदि आपने अभी तक प्रवेश नहीं लिया है, तो आप अगले रा",
+    "lang": "hinglish"
+  },
+  {
+    "id": "paraphrase_7",
+    "type": "paraphrase",
+    "query": "Can you tell me when does registration begin?",
+    "expected_keywords": "You will receive a notificatio",
+    "lang": "en"
+  },
+  {
+    "id": "irrelevant_14",
+    "type": "out_of_scope",
+    "query": "Good morning",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "irrelevant_11",
+    "type": "out_of_scope",
+    "query": "Stock market status",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "exact_25",
+    "type": "exact",
+    "query": "I want to change my chosen stream after submission.",
+    "expected_keywords": "If you haven't taken admission yet, you can change",
+    "lang": "en"
+  },
+  {
+    "id": "exact_32",
+    "type": "exact",
+    "query": "पंजीकरण शुल्क कितना है और इसका भुगतान कैसे करें?",
+    "expected_keywords": "पंजीकरण शुल्क ₹100 है। इसका भुगतान नेट बैंकिंग, का",
+    "lang": "hi"
+  },
+  {
+    "id": "exact_30",
+    "type": "exact",
+    "query": "How can I cancel admission?",
+    "expected_keywords": "Make sure you are admitted then visit admitted col",
+    "lang": "en"
+  },
+  {
+    "id": "exact_15",
+    "type": "exact",
+    "query": "अतिरिक्त विषय गुण धोरण?",
+    "expected_keywords": "CBSE अतिरिक्त (6th) विषयाचे गुण दोन परिस्थितींमध्य",
+    "lang": "mr"
+  },
+  {
+    "id": "exact_21",
+    "type": "exact",
+    "query": "यदि मेरे पास नॉन-क्रीमी लेयर प्रमाणपत्र नहीं है तो क्या होगा?",
+    "expected_keywords": "यह आरक्षित श्रेणियों (OBC आदि) के लिए आवश्यक है। य",
+    "lang": "hi"
+  },
+  {
+    "id": "irrelevant_2",
+    "type": "out_of_scope",
+    "query": "Tell me a joke",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "irrelevant_3",
+    "type": "out_of_scope",
+    "query": "Who is the president of USA?",
+    "expected_fallback": true,
+    "lang": "en"
+  },
+  {
+    "id": "exact_26",
+    "type": "exact",
+    "query": "प्रवेश प्रक्रियेतून माघार कशी घ्यावी?",
+    "expected_keywords": "यासाठी पोर्टलवरील Withdrawal of application पर्याय",
+    "lang": "mr"
+  }
+]

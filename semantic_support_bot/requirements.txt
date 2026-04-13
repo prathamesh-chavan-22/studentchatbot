@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+jinja2
+python-dotenv
+sentence-transformers
+numpy
+loguru
+pytest
+pytest-asyncio
+pytest-playwright
+langdetect
+rich
+httpx
+faiss-cpu
+playwright

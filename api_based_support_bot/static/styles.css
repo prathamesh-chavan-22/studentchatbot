@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  background: #f4f7fb;
+  color: #1f2937;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.topbar {
+  background: linear-gradient(135deg, #0b4a7d, #0f6cad);
+  color: #fff;
+  padding: 18px 0;
+}
+
+.topbar .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.topbar p {
+  margin: 4px 0;
+}
+
+.help {
+  text-align: right;
+}
+
+.nav {
+  display: flex;
+  gap: 14px;
+  padding: 12px 16px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.nav a {
+  color: #0b4a7d;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.content {
+  padding: 22px 16px 80px;
+}
+
+.hero, .card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(12, 27, 43, 0.12);
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.card li {
+  margin-bottom: 12px;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+
