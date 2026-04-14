@@ -26,7 +26,7 @@ index.pkl
 
 # Specialized Data Files (Backups/Temporary)
 *_backup*.json
-*temp*
+tmp/
 
 # IDEs
 .vscode/

@@ -60,6 +60,15 @@ app.add_middleware(
 app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="static")
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
+# Log absolute paths for debugging server environment
+print(f"DEBUG: BASE_DIR is {BASE_DIR}")
+print(f"DEBUG: Templates directory is {BASE_DIR / 'templates'}")
+print(f"DEBUG: Static directory is {BASE_DIR / 'static'}")
+
+# Check if index.html exists
+idx_path = BASE_DIR / "templates" / "index.html"
+print(f"DEBUG: index.html exists: {idx_path.exists()}")
+
 
 class ChatRequest(BaseModel):
     message: str = Field(..., max_length=500)
@@ -101,3 +110,8 @@ async def chat(payload: ChatRequest) -> dict:
         return await future
     except Exception as e:
         return {"answer": f"Error: {str(e)}", "sources": [], "used_groq": False}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)

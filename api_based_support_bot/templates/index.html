@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>School Education and Sports Department | FYJC Support</title>
+  <link rel="stylesheet" href="/static/styles.css?v=2" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div>
+        <h1>Government of Maharashtra</h1>
+        <p>School Education and Sports Department</p>
+        <p>Std. 11th Centralised Online Admission Process</p>
+      </div>
+      <div class="help">
+        <p>Helpline: <strong>8530955564</strong> (9:00 AM to 7:00 PM)</p>
+        <p>Email: <strong>support@mahafyjcadmissions.in</strong></p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav wrap">
+    <a href="#">Home</a>
+    <a href="#">Search Colleges</a>
+    <a href="#">Allotment List</a>
+    <a href="#">Download</a>
+    <a href="#">FAQ</a>
+  </nav>
+
+  <main class="wrap content">
+    <section class="hero">
+      <h2>FYJC Admissions Help Portal (Demo)</h2>
+      <p>
+        This is a dummy support site inspired by the FYJC portal. Use the support bot at bottom-right
+        for Marathi/English assistance.
+      </p>
+    </section>
+
+    <section class="card">
+      <h3>वारंवार विचारले जाणारे प्रश्न (Sample)</h3>
+      <ul>
+        {% for q in sample_faqs %}
+          <li>{{ q }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
+
+  <script src="/static/widget.js"></script>
+  <script>
+    // Automatically detect the current host and port (IP-based or domain-based)
+    const apiBaseUrl = window.location.origin;
+    
+    window.initFYJCBot({
+      apiHost: apiBaseUrl
+    });
+    
+    console.log("FYJC Bot initialized hitting:", apiBaseUrl);
+  </script>
+</body>
+</html>
