@@ -13,6 +13,7 @@ from fastapi import Request
 from pydantic import BaseModel, Field
 
 import asyncio
+from contextlib import asynccontextmanager
 from typing import Any
 
 from app.bot import FYJCSupportBot
@@ -22,8 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
 bot = FYJCSupportBot()
-
-app = FastAPI(title="FYJC Support Bot", version="1.0.0")
 
 # Task queue for non-blocking processing
 chat_queue: asyncio.Queue = asyncio.Queue()
@@ -41,9 +40,14 @@ async def chat_worker():
         finally:
             chat_queue.task_done()
 
-@app.on_event("startup")
-async def startup_event():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup: launch the background chat worker
     asyncio.create_task(chat_worker())
+    yield
+    # Shutdown: nothing extra needed; worker will be cancelled automatically
+
+app = FastAPI(title="FYJC Support Bot", version="1.0.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
