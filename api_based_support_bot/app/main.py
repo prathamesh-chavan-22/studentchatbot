@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
 bot = FYJCSupportBot()
+EXPOSE_SOURCES_IN_CHAT_API = os.getenv("EXPOSE_SOURCES_IN_CHAT_API", "false").strip().lower() in {"1", "true", "yes", "on"}
 
 # Task queue for non-blocking processing
 chat_queue: asyncio.Queue = asyncio.Queue()
@@ -75,6 +76,14 @@ class ChatRequest(BaseModel):
     history: list[dict[str, str]] = Field(default_factory=list)
 
 
+def _public_chat_response(result: dict[str, Any]) -> dict[str, Any]:
+    """Return a client-safe payload; hide internal retrieval sources unless explicitly enabled."""
+    safe = dict(result)
+    if not EXPOSE_SOURCES_IN_CHAT_API:
+        safe.pop("sources", None)
+    return safe
+
+
 @app.get("/health")
 def health() -> dict:
     return {"status": "ok"}
@@ -97,9 +106,9 @@ async def chat(payload: ChatRequest) -> dict:
     query = payload.message.strip()
     history = payload.history
     if not query:
-        return {"answer": "Please type a question.", "sources": [], "used_groq": False}
+        return _public_chat_response({"answer": "Please type a question.", "sources": [], "used_groq": False})
     if len(query) > 500:
-        return {"answer": "Query too long. Limit: 500 chars.", "sources": [], "used_groq": False}
+        return _public_chat_response({"answer": "Query too long. Limit: 500 chars.", "sources": [], "used_groq": False})
 
     # Submit query and history to queue and wait for result
     loop = asyncio.get_running_loop()
@@ -107,9 +116,10 @@ async def chat(payload: ChatRequest) -> dict:
     await chat_queue.put((future, query, history))
     
     try:
-        return await future
+        result = await future
+        return _public_chat_response(result)
     except Exception as e:
-        return {"answer": f"Error: {str(e)}", "sources": [], "used_groq": False}
+        return _public_chat_response({"answer": f"Error: {str(e)}", "sources": [], "used_groq": False})
 
 
 if __name__ == "__main__":

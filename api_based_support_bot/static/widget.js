@@ -376,6 +376,12 @@
 
 
   window.initFYJCBot = function(userConfig = {}) {
+    if (window.__FYJC_BOT_INITIALIZED__) {
+      console.warn('FYJC Bot widget is already initialized. Skipping duplicate init.');
+      return;
+    }
+    window.__FYJC_BOT_INITIALIZED__ = true;
+
     const config = { ...defaultConfig, ...userConfig };
     
     // Inject Styles
@@ -394,6 +400,7 @@
     const closeBtn = document.getElementById('chat-close');
     const form = document.getElementById('chat-form');
     const input = document.getElementById('chat-input');
+    const sendBtn = form.querySelector('.send-btn');
     const messages = document.getElementById('chat-messages');
     const tooltip = document.getElementById('chat-tooltip');
     const statusDot = document.getElementById('status-dot');
@@ -401,6 +408,7 @@
     const CHAT_KEY = 'fyjc_chat_history';
 
     let isStreaming = false;
+    let isRequestInFlight = false;
     let isChatOpen = false;
     let isHovering = false;
     let chatHistory = []; // In-memory history for session context (cleared on refresh)
@@ -427,6 +435,25 @@
       div.innerHTML = formatText(text);
       messages.appendChild(div);
       messages.scrollTop = messages.scrollHeight;
+    }
+
+    function sanitizeAnswer(text) {
+      if (typeof text !== 'string') return '';
+
+      let cleaned = text.trim();
+
+      // Remove trailing "Sources/References/Citations" sections if present.
+      cleaned = cleaned.replace(/\n{0,2}(?:\*\*)?\s*(?:sources?|references?|citations?)\s*:?\s*[\s\S]*$/i, '');
+      cleaned = cleaned.replace(/\n{0,2}(?:source|sources)\s*-\s*[\s\S]*$/i, '');
+
+      // Cleanup excessive blank lines after sanitization.
+      cleaned = cleaned.replace(/\n{3,}/g, '\n\n').trim();
+      return cleaned;
+    }
+
+    function setInputBusyState(isBusy) {
+      input.disabled = isBusy;
+      if (sendBtn) sendBtn.disabled = isBusy;
     }
 
     async function streamMessage(fullText, cls) {
@@ -537,9 +564,12 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      if (isStreaming) return;
+      if (isStreaming || isRequestInFlight) return;
       const text = input.value.trim();
       if (!text) return;
+
+      isRequestInFlight = true;
+      setInputBusyState(true);
 
       // Add user message first — this pushes it into chatHistory
       addMessage(text, 'user-msg');
@@ -562,13 +592,18 @@
         const data = await res.json();
         messages.removeChild(typingDiv);
         if (data.answer) {
+          const cleanedAnswer = sanitizeAnswer(data.answer);
           isStreaming = true;
-          await streamMessage(data.answer, 'bot-msg');
+          await streamMessage(cleanedAnswer || 'I can help with FYJC admission queries. Please ask your question again.', 'bot-msg');
           isStreaming = false;
         }
       } catch (err) {
         if (messages.contains(typingDiv)) messages.removeChild(typingDiv);
         addMessage('Something went wrong. Please try again.', 'bot-msg');
+      } finally {
+        isRequestInFlight = false;
+        setInputBusyState(false);
+        input.focus();
       }
     });
 
