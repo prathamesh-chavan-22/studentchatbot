@@ -33,6 +33,7 @@ class FYJCSupportBot:
         self.embedding_model_name = os.getenv("EMBEDDING_MODEL", "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
         self.chat_model = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
         self.search_k = int(os.getenv("SEARCH_K", "5"))
+        self.fallback_min_score = float(os.getenv("FALLBACK_MIN_SCORE", "0.55"))
 
         # Exclusively use knowledge_base.txt — no faq_file fallback
         self.knowledge_file = self.base_dir / "knowledge_base.txt"
@@ -49,13 +50,46 @@ class FYJCSupportBot:
         self._groq_client = Groq(api_key=api_key) if api_key else None
 
     def _load_kb(self, path: Path) -> List[str]:
-        """Load all entries from knowledge_base.txt (one entry per line)."""
+        """Load FAQ entries from knowledge_base.txt as Q/A blocks.
+
+        This intentionally ignores noisy scraped metadata lines (e.g., Source: ...)
+        so retrieval quality remains focused on FYJC FAQ content.
+        """
         with open(path, "r", encoding="utf-8") as f:
-            return [
-                line.replace(" [BREAK] ", "\n").strip()
-                for line in f
-                if line.strip()
-            ]
+            lines = [line.replace(" [BREAK] ", "\n").strip() for line in f if line.strip()]
+
+        entries: List[str] = []
+        current_q: str | None = None
+        current_a_parts: List[str] = []
+
+        for line in lines:
+            if line.startswith("Source:"):
+                continue
+
+            if line.startswith("Q:"):
+                if current_q:
+                    answer = "\n".join(current_a_parts).strip()
+                    entries.append(f"{current_q}\n{answer}" if answer else current_q)
+                current_q = line
+                current_a_parts = []
+                continue
+
+            if line.startswith("A:"):
+                current_a_parts.append(line)
+                continue
+
+            # Continuation lines: attach to the active answer, else ignore.
+            if current_q:
+                current_a_parts.append(line)
+
+        if current_q:
+            answer = "\n".join(current_a_parts).strip()
+            entries.append(f"{current_q}\n{answer}" if answer else current_q)
+
+        # Fallback to legacy line-wise entries only if parsing unexpectedly fails.
+        if entries:
+            return entries
+        return lines
 
     def _embed(self, texts: List[str]) -> np.ndarray:
         model_name = self.embedding_model_name.lower()
@@ -73,7 +107,11 @@ class FYJCSupportBot:
             print(f"Loading persistent index from {self.index_path}")
             self._index = faiss.read_index(str(self.index_path))
             self._matrix = np.load(self.matrix_path)
-            assert len(self._questions) == self._matrix.shape[0], "Questions count mismatch with saved index"
+            if len(self._questions) != self._matrix.shape[0]:
+                print("Knowledge base size changed; rebuilding persistent index...")
+                self._index, self._matrix = self._build_index(self._questions)
+                faiss.write_index(self._index, str(self.index_path))
+                np.save(self.matrix_path, self._matrix)
             return self._index, self._matrix
         
         print("Building new index...")
@@ -109,29 +147,68 @@ class FYJCSupportBot:
     def _looks_marathi(text: str) -> bool:
         return bool(re.search(r"[\u0900-\u097F]", text))
 
-    def _fallback_answer(self, query: str, sources: List[RetrievalResult]) -> str:
-        top = "\n".join([f"- {s.question}" for s in sources[:3]]) if sources else "- माहिती उपलब्ध नाही"
+    @staticmethod
+    def _normalize_for_match(text: str) -> str:
+        return re.sub(r"[^a-z0-9\s]", "", text.lower()).strip()
 
-        if self._looks_marathi(query):
-            return (
-                "**मराठी**\n"
-                "आपल्या प्रश्नासाठी संबंधित FAQ खालीलप्रमाणे आहेत:\n"
-                f"{top}\n\n"
-                "**English**\n"
-                "For your query, these related FAQs were found:\n"
-                f"{top}\n\n"
-                "अधिक मदतीसाठी हेल्पलाईन: 8530955564"
-            )
+    def _is_greeting(self, query: str) -> bool:
+        normalized = self._normalize_for_match(query)
+        greetings = {
+            "hi", "hello", "hey", "good morning", "good afternoon", "good evening",
+            "namaste", "namaskar", "hii", "helo", "hy"
+        }
+        return normalized in greetings
 
+    def _greeting_reply(self, query: str) -> str:
+        if self._looks_marathi(query) or "namaste" in query.lower() or "namaskar" in query.lower():
+            return "नमस्कार! FYJC महाराष्ट्र प्रवेशाबाबत मी तुमची कशी मदत करू शकतो?"
+        if "good morning" in query.lower():
+            return "Good morning! How can I help you with FYJC Maharashtra admissions?"
+        if "good afternoon" in query.lower():
+            return "Good afternoon! How can I help you with FYJC Maharashtra admissions?"
+        if "good evening" in query.lower():
+            return "Good evening! How can I help you with FYJC Maharashtra admissions?"
+        return "Hello! How can I help you with FYJC Maharashtra admissions?"
+
+    @staticmethod
+    def _refusal_reply() -> str:
         return (
-            "**English**\n"
-            "For your query, these related FAQs were found:\n"
-            f"{top}\n\n"
-            "**मराठी**\n"
-            "आपल्या प्रश्नासाठी संबंधित FAQ खालीलप्रमाणे आहेत:\n"
-            f"{top}\n\n"
-            "For more help, call helpline: 8530955564"
+            "I can only assist with FYJC Maharashtra admission queries based on the official FAQs. "
+            "For more details, please contact support@mahafyjcadmissions.in or call the helpline at 8530955564."
         )
+
+    @staticmethod
+    def _extract_answer_text(entry: str) -> str:
+        match = re.search(r"A:\s*(.*)", entry, flags=re.DOTALL)
+        if match:
+            return match.group(1).strip()
+        return entry.strip()
+
+    def _fallback_answer(self, query: str, sources: List[RetrievalResult]) -> str:
+        if self._is_greeting(query):
+            return self._greeting_reply(query)
+
+        normalized_query = self._normalize_for_match(query)
+        if len(normalized_query) < 4:
+            return self._refusal_reply()
+
+        if not sources:
+            return self._refusal_reply()
+
+        best = sources[0]
+        if best.score < self.fallback_min_score:
+            return self._refusal_reply()
+
+        answer_text = self._extract_answer_text(best.question)
+        if not answer_text:
+            return self._refusal_reply()
+
+        # If user asked in non-Marathi but retrieval answer is Marathi, avoid returning
+        # an unrelated cross-language snippet from vector similarity noise.
+        if not self._looks_marathi(query) and self._looks_marathi(answer_text):
+            return self._refusal_reply()
+
+        return answer_text
 
     def answer(self, query: str, history: List[Dict[str, str]] = None) -> dict:
         results = self.search(query)
