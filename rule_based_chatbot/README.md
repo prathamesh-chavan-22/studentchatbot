@@ -29,10 +29,21 @@ Set env vars to change:
 
 ## Admin Dashboard
 
+The backend serves the admin UI at `http://localhost:8002/admin`.
+
+Build the admin assets when you change files in `admin/src`:
+
 ```bash
 cd admin
 npm install
+npm run build
+```
+
+For local frontend-only development, you can still run Vite:
+
+```bash
+cd admin
 npm run dev
 ```
 
-Open the Vite URL (usually `http://localhost:5173`).
+Vite dev runs at `http://localhost:5173` and proxies `/api` to the backend.

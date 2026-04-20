@@ -3,7 +3,8 @@ from functools import partial
 from pathlib import Path
 
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
-from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field, field_validator
@@ -78,9 +79,27 @@ def create_app(
 
     app = FastAPI(title="Rule Based Chatbot", version="1.0.0")
 
+    # Enable CORS for all origins (development only)
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
     static_dir = base_dir / "static"
+    admin_dist_dir = base_dir.parent / "admin" / "dist"
+    admin_index_path = admin_dist_dir / "index.html"
+    admin_assets_dir = admin_dist_dir / "assets"
     templates = Jinja2Templates(directory=str(base_dir / "templates"))
     app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+    if admin_assets_dir.is_dir():
+        app.mount(
+            "/admin/assets",
+            StaticFiles(directory=str(admin_assets_dir)),
+            name="admin-assets",
+        )
 
     get_db = partial(db_session, session_local)
 
@@ -100,6 +119,13 @@ def create_app(
     @app.get("/", response_class=HTMLResponse)
     def home(request: Request):
         return templates.TemplateResponse("index.html", {"request": request})
+
+    @app.get("/admin")
+    @app.get("/admin/")
+    def admin_dashboard():
+        if not admin_index_path.is_file():
+            raise HTTPException(status_code=404, detail="Admin dashboard not found")
+        return FileResponse(admin_index_path)
 
     @app.post("/api/chat/ask")
     def ask(payload: AskRequest, db: Session = Depends(get_db)):

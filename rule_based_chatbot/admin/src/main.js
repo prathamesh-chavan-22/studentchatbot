@@ -1,4 +1,3 @@
-const API_BASE = "http://localhost:8002";
 const app = document.getElementById("app");
 
 const styles = `
@@ -13,7 +12,7 @@ const styles = `
 document.head.appendChild(Object.assign(document.createElement("style"), { textContent: styles }));
 
 async function api(path, options = {}) {
-  const response = await fetch(`${API_BASE}${path}`, {
+  const response = await fetch(path, {
     credentials: "include",
     headers: { "Content-Type": "application/json", ...(options.headers || {}) },
     ...options,

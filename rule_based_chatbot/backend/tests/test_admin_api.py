@@ -1,3 +1,18 @@
+import re
+
+
+def test_admin_dashboard_is_served_from_backend(client):
+    response = client.get("/admin")
+    assert response.status_code == 200
+
+    html = response.text
+    script_match = re.search(r'src="(?P<src>/admin/assets/[^"]+)"', html)
+    assert script_match is not None
+
+    assets_response = client.get(script_match.group("src"))
+    assert assets_response.status_code == 200
+
+
 def test_admin_routes_require_auth(client):
     response = client.get("/api/admin/qna")
     assert response.status_code == 401
