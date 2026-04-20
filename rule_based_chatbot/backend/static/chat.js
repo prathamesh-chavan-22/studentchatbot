@@ -10,6 +10,23 @@ function addMessage(text, role = "bot") {
   chat.scrollTop = chat.scrollHeight;
 }
 
+function normalizeForCompare(text) {
+  return (text || "").trim().replace(/\s+/g, " ").toLowerCase();
+}
+
+function getLastUserMessageText() {
+  const userMessages = chat.querySelectorAll(".msg.user");
+  if (userMessages.length === 0) return "";
+  return userMessages[userMessages.length - 1].textContent || "";
+}
+
+function isSameAsLastUserMessage(text) {
+  const normalizedSelected = normalizeForCompare(text);
+  if (!normalizedSelected) return false;
+  const normalizedLastUser = normalizeForCompare(getLastUserMessageText());
+  return normalizedLastUser !== "" && normalizedLastUser === normalizedSelected;
+}
+
 function addSuggestions(suggestions) {
   const wrapper = document.createElement("div");
   wrapper.className = "msg bot";
@@ -31,7 +48,9 @@ function addSuggestions(suggestions) {
         body: JSON.stringify({ qna_id: item.id }),
       });
       const data = await res.json();
-      addMessage(item.question, "user");
+      if (!isSameAsLastUserMessage(item.question)) {
+        addMessage(item.question, "user");
+      }
       addMessage(data.answer, "bot");
       wrapper.remove();
     };

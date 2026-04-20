@@ -487,6 +487,26 @@
       }
     }
 
+    function normalizeForCompare(text) {
+      return (text || '').trim().replace(/\s+/g, ' ').toLowerCase();
+    }
+
+    function getLastUserMessageText() {
+      for (let i = chatHistory.length - 1; i >= 0; i -= 1) {
+        if (chatHistory[i].role === 'user') {
+          return chatHistory[i].content || '';
+        }
+      }
+      return '';
+    }
+
+    function isSameAsLastUserMessage(text) {
+      const normalizedSelected = normalizeForCompare(text);
+      if (!normalizedSelected) return false;
+      const normalizedLastUser = normalizeForCompare(getLastUserMessageText());
+      return normalizedLastUser !== '' && normalizedLastUser === normalizedSelected;
+    }
+
     async function checkStatus() {
       try {
         const res = await fetch(`${config.apiHost}/health`);
@@ -543,8 +563,9 @@
         button.className = 'suggestion-btn';
         button.textContent = item.question;
         button.onclick = async () => {
-          // show user question
-          addMessage(item.question, 'user-msg');
+          if (!isSameAsLastUserMessage(item.question)) {
+            addMessage(item.question, 'user-msg');
+          }
           // remove suggestions UI
           wrapper.remove();
 
