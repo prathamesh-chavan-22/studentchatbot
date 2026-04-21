@@ -1,4 +1,33 @@
 import re
+import sqlite3
+
+from fastapi.testclient import TestClient
+
+from app.main import create_app
+
+
+def test_admin_login_with_invalid_stored_hash_returns_401(tmp_path):
+    db_path = tmp_path / "corrupt.db"
+    app = create_app(
+        database_url=f"sqlite:///{db_path}",
+        admin_username="admin",
+        admin_password="admin123",
+        testing=True,
+    )
+    client = TestClient(app)
+
+    with sqlite3.connect(db_path) as conn:
+        conn.execute(
+            "UPDATE admin_users SET password_hash = ? WHERE username = ?",
+            ("round17_final", "admin"),
+        )
+        conn.commit()
+
+    response = client.post(
+        "/api/admin/login",
+        json={"username": "admin", "password": "admin123"},
+    )
+    assert response.status_code == 401
 
 
 def test_admin_dashboard_is_served_from_backend(client):

@@ -1,5 +1,6 @@
 from itsdangerous import BadSignature, URLSafeSerializer
 from passlib.context import CryptContext
+from passlib.exc import UnknownHashError
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -14,7 +15,10 @@ def hash_password(password: str) -> str:
 
 
 def verify_password(password: str, password_hash: str) -> bool:
-    return pwd_context.verify(password, password_hash)
+    try:
+        return pwd_context.verify(password, password_hash)
+    except UnknownHashError:
+        return False
 
 
 def ensure_admin_user(db: Session, username: str, password: str) -> None:
