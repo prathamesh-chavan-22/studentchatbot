@@ -24,6 +24,10 @@ def verify_password(password: str, password_hash: str) -> bool:
 def ensure_admin_user(db: Session, username: str, password: str) -> None:
     existing = db.scalar(select(AdminUser).where(AdminUser.username == username))
     if existing:
+        # If the hash is not Argon2, upgrade it using the current environment's admin password
+        if not existing.password_hash.startswith("$argon2"):
+            existing.password_hash = hash_password(password)
+            db.commit()
         return
     db.add(AdminUser(username=username, password_hash=hash_password(password)))
     db.commit()
