@@ -70,6 +70,8 @@ def create_app(
     admin_username = admin_username or os.getenv("ADMIN_USERNAME", "admin")
     admin_password = admin_password or os.getenv("ADMIN_PASSWORD", "admin123")
     secret_key = os.getenv("SESSION_SECRET", "change-me-in-production")
+    # Default to False to support HTTP-only deployments (like IP-based student projects)
+    session_secure = os.getenv("SESSION_SECURE", "false").lower() == "true"
 
     engine = build_engine(database_url)
     session_local = build_session_local(engine)
@@ -184,7 +186,7 @@ def create_app(
             token,
             httponly=True,
             samesite="lax",
-            secure=not testing,
+            secure=session_secure,
         )
         return {"username": admin.username}
 
