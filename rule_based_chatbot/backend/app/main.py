@@ -20,7 +20,7 @@ from app.auth import (
 )
 from app.chat_service import normalize_text, similarity_score
 from app.db import build_engine, build_session_local, db_session, init_db
-from app.models import QnA
+from app.models import ChatLog, QnA
 
 
 class AskRequest(BaseModel):
@@ -89,17 +89,10 @@ def create_app(
     )
 
     static_dir = base_dir / "static"
-    admin_dist_dir = base_dir.parent / "admin" / "dist"
-    admin_index_path = admin_dist_dir / "index.html"
-    admin_assets_dir = admin_dist_dir / "assets"
+    admin_dir = base_dir.parent / "admin"
+    admin_index_path = admin_dir / "index.html"
     templates = Jinja2Templates(directory=str(base_dir / "templates"))
     app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
-    if admin_assets_dir.is_dir():
-        app.mount(
-            "/admin/assets",
-            StaticFiles(directory=str(admin_assets_dir)),
-            name="admin-assets",
-        )
 
     get_db = partial(db_session, session_local)
 
@@ -150,9 +143,19 @@ def create_app(
             reverse=True,
         )[:4]
 
+        suggestions = [{"id": item["id"], "question": item["question"]} for item in ranked]
+        
+        # Log the interaction
+        log_entry = ChatLog(
+            user_message=payload.message,
+            bot_response=f"Suggestions: {', '.join(s['question'] for s in suggestions)}"
+        )
+        db.add(log_entry)
+        db.commit()
+
         return {
             "type": "suggestions",
-            "suggestions": [{"id": item["id"], "question": item["question"]} for item in ranked],
+            "suggestions": suggestions,
         }
 
     @app.post("/api/chat/select")
@@ -160,6 +163,14 @@ def create_app(
         record = db.get(QnA, payload.qna_id)
         if not record:
             raise HTTPException(status_code=404, detail="Suggestion not found")
+        # Log the interaction
+        log_entry = ChatLog(
+            user_message=f"[Selection ID: {payload.qna_id}]",
+            bot_response=record.answer
+        )
+        db.add(log_entry)
+        db.commit()
+
         return {"type": "answer", "answer": record.answer}
 
     @app.post("/api/admin/login")
@@ -242,6 +253,22 @@ def create_app(
         db.delete(record)
         db.commit()
         return Response(status_code=204)
+
+    @app.get("/api/admin/logs")
+    def list_logs(
+        _: str = Depends(require_admin),
+        db: Session = Depends(get_db),
+    ):
+        rows = db.scalars(select(ChatLog).order_by(ChatLog.timestamp.desc())).all()
+        return [
+            {
+                "id": row.id,
+                "user_message": row.user_message,
+                "bot_response": row.bot_response,
+                "timestamp": row.timestamp.isoformat(),
+            }
+            for row in rows
+        ]
 
     return app
 

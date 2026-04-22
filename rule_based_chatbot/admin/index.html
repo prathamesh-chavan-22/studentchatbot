@@ -1,12 +1,570 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --danger: #ef4444;
+            --success: #22c55e;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Auth Screen */
+        #auth-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .auth-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .auth-card h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-secondary {
+            background-color: var(--border);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+        }
+
+        .btn-danger {
+            background-color: #fee2e2;
+            color: var(--danger);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-danger:hover {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        /* Dashboard Screen */
+        #dashboard-screen {
+            display: none;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            padding: 0.5rem 1.5rem;
+            background: transparent;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            border-radius: 0;
+        }
+
+        /* Table Styles */
+        .card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f1f5f9;
+            text-align: left;
+            padding: 1rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Modal / Form */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        #logs-view, #qna-view {
+            display: none;
+        }
+
+        #logs-view.active, #qna-view.active {
+            display: block;
+        }
+
+        .timestamp {
+            white-space: nowrap;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .btn-add {
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container" id="auth-screen">
+        <div class="auth-card">
+            <h1>Admin Login</h1>
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+                <div id="login-error" style="color: var(--danger); margin-top: 1rem; text-align: center; font-size: 0.875rem;"></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container" id="dashboard-screen">
+        <header>
+            <h1 style="font-size: 1.25rem;">Chatbot Admin</h1>
+            <button id="logout-btn" class="btn-secondary">Logout</button>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('qna')">Q&A Knowledge</button>
+            <button class="tab-btn" onclick="showTab('logs')">Interaction Logs</button>
+        </div>
+
+        <div id="qna-view" class="active">
+            <button class="btn-primary btn-add" onclick="openModal()">+ Add New Entry</button>
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%;">Question</th>
+                            <th style="width: 45%;">Answer</th>
+                            <th style="width: 20%;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="qna-table-body">
+                        <!-- Rows will be injected here -->
+                    </tbody>
+                </table>
+                <div id="qna-loading" class="loading">Loading...</div>
+            </div>
+        </div>
+
+        <div id="logs-view">
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Timestamp</th>
+                            <th style="width: 40%;">User Message</th>
+                            <th style="width: 40%;">Bot Response</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logs-table-body">
+                        <!-- Rows will be injected here -->
+                    </tbody>
+                </table>
+                <div id="logs-loading" class="loading">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="entry-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-title" style="margin-bottom: 1.5rem;">Add Q&A Entry</h2>
+            <form id="qna-form">
+                <input type="hidden" id="entry-id">
+                <div class="form-group">
+                    <label>Question</label>
+                    <input type="text" id="entry-question" required>
+                </div>
+                <div class="form-group">
+                    <label>Answer</label>
+                    <textarea id="entry-answer" rows="5" required></textarea>
+                </div>
+                <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn-primary" style="width: auto;">Save Entry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // API Base (works relative to admin page location)
+        const API = '/api/admin';
+
+        // State
+        let currentTab = 'qna';
+
+        // Check Auth on Init
+        async function checkAuth() {
+            try {
+                const res = await fetch(`${API}/me`);
+                if (res.ok) {
+                    showDashboard();
+                } else {
+                    showAuth();
+                }
+            } catch (err) {
+                showAuth();
+            }
+        }
+
+        function showAuth() {
+            document.getElementById('auth-screen').style.display = 'flex';
+            document.getElementById('dashboard-screen').style.display = 'none';
+        }
+
+        function showDashboard() {
+            document.getElementById('auth-screen').style.display = 'none';
+            document.getElementById('dashboard-screen').style.display = 'block';
+            loadData();
+        }
+
+        // Login
+        document.getElementById('login-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorEl = document.getElementById('login-error');
+            errorEl.textContent = '';
+
+            try {
+                const res = await fetch(`${API}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (res.ok) {
+                    showDashboard();
+                } else {
+                    const data = await res.json();
+                    errorEl.textContent = data.detail || 'Login failed';
+                }
+            } catch (err) {
+                errorEl.textContent = 'Server error. Please try again.';
+            }
+        };
+
+        // Logout
+        document.getElementById('logout-btn').onclick = async () => {
+            await fetch(`${API}/logout`, { method: 'POST' });
+            showAuth();
+        };
+
+        // Tabs
+        function showTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.tab-btn[onclick="showTab('${tab}')"]`).classList.add('active');
+            
+            document.getElementById('qna-view').classList.remove('active');
+            document.getElementById('logs-view').classList.remove('active');
+            document.getElementById(`${tab}-view`).classList.add('active');
+            
+            loadData();
+        }
+
+        async function loadData() {
+            if (currentTab === 'qna') loadQnA();
+            else if (currentTab === 'logs') loadLogs();
+        }
+
+        // Q&A CRUD
+        async function loadQnA() {
+            const list = document.getElementById('qna-table-body');
+            const loading = document.getElementById('qna-loading');
+            list.innerHTML = '';
+            loading.style.display = 'block';
+
+            try {
+                const res = await fetch(`${API}/qna`);
+                const data = await res.json();
+                loading.style.display = 'none';
+                
+                data.forEach(item => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td style="font-weight: 500;">${escapeHtml(item.question)}</td>
+                        <td style="color: var(--text-light); font-size: 0.875rem;">${escapeHtml(item.answer)}</td>
+                        <td>
+                            <div class="actions">
+                                <button class="btn-secondary" onclick='editEntry(${JSON.stringify(item).replace(/'/g, "&apos;")})'>Edit</button>
+                                <button class="btn-danger" onclick="deleteEntry(${item.id})">Delete</button>
+                            </div>
+                        </td>
+                    `;
+                    list.appendChild(tr);
+                });
+            } catch (err) {
+                loading.textContent = 'Failed to load Q&A';
+            }
+        }
+
+        // Logs
+        async function loadLogs() {
+            const list = document.getElementById('logs-table-body');
+            const loading = document.getElementById('logs-loading');
+            list.innerHTML = '';
+            loading.style.display = 'block';
+
+            try {
+                const res = await fetch(`${API}/logs`);
+                const data = await res.json();
+                loading.style.display = 'none';
+
+                data.forEach(item => {
+                    const tr = document.createElement('tr');
+                    const date = new Date(item.timestamp).toLocaleString();
+                    tr.innerHTML = `
+                        <td class="timestamp">${date}</td>
+                        <td style="font-weight: 500;">${escapeHtml(item.user_message)}</td>
+                        <td style="color: var(--text-light); font-size: 0.875rem;">${escapeHtml(item.bot_response)}</td>
+                    `;
+                    list.appendChild(tr);
+                });
+                if (data.length === 0) {
+                    loading.style.display = 'block';
+                    loading.textContent = 'No logs available yet.';
+                }
+            } catch (err) {
+                loading.textContent = 'Failed to load logs';
+            }
+        }
+
+        // Modal Controls
+        function openModal(item = null) {
+            document.getElementById('entry-modal').style.display = 'flex';
+            const form = document.getElementById('qna-form');
+            const title = document.getElementById('modal-title');
+            
+            if (item) {
+                title.textContent = 'Edit Entry';
+                document.getElementById('entry-id').value = item.id;
+                document.getElementById('entry-question').value = item.question;
+                document.getElementById('entry-answer').value = item.answer;
+            } else {
+                title.textContent = 'Add Entry';
+                form.reset();
+                document.getElementById('entry-id').value = '';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('entry-modal').style.display = 'none';
+        }
+
+        document.getElementById('qna-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('entry-id').value;
+            const question = document.getElementById('entry-question').value;
+            const answer = document.getElementById('entry-answer').value;
+
+            const url = id ? `${API}/qna/${id}` : `${API}/qna`;
+            const method = id ? 'PUT' : 'POST';
+
+            try {
+                const res = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question, answer })
+                });
+
+                if (res.ok) {
+                    closeModal();
+                    loadQnA();
+                } else {
+                    const data = await res.json();
+                    alert(data.detail || 'Failed to save');
+                }
+            } catch (err) {
+                alert('Server error');
+            }
+        };
+
+        async function deleteEntry(id) {
+            if (!confirm('Are you sure you want to delete this knowledge entry?')) return;
+            try {
+                const res = await fetch(`${API}/qna/${id}`, { method: 'DELETE' });
+                if (res.ok) loadQnA();
+            } catch (err) {
+                alert('Failed to delete');
+            }
+        }
+
+        function editEntry(item) {
+            openModal(item);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        window.onclick = (event) => {
+            const modal = document.getElementById('entry-modal');
+            if (event.target == modal) closeModal();
+        }
+
+        // Init
+        checkAuth();
+    </script>
+</body>
 </html>

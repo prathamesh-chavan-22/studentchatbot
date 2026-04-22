@@ -31,3 +31,12 @@ class AdminUser(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime, default=datetime.utcnow, nullable=False
     )
+class ChatLog(Base):
+    __tablename__ = "chat_logs"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    user_message: Mapped[str] = mapped_column(String(500), nullable=False)
+    bot_response: Mapped[str] = mapped_column(Text, nullable=False)
+    timestamp: Mapped[datetime] = mapped_column(
+        DateTime, default=datetime.utcnow, nullable=False
+    )
