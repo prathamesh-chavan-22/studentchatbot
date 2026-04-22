@@ -2,7 +2,8 @@ fastapi
 uvicorn[standard]
 jinja2
 sqlalchemy
-passlib[bcrypt]
+passlib
+argon2-cffi
 itsdangerous
 pytest
 httpx
