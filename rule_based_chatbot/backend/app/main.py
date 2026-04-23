@@ -143,18 +143,30 @@ def create_app(
             ),
             key=lambda x: x["score"],
             reverse=True,
-        )[:4]
+        )
 
-        suggestions = [{"id": item["id"], "question": item["question"]} for item in ranked]
+        # Filter for matches with 80% or higher similarity
+        suggestions = [{"id": item["id"], "question": item["question"]} for item in ranked if item["score"] >= 0.8]
         
         # Log the interaction
+        if suggestions:
+            bot_response = f"Suggestions: {', '.join(s['question'] for s in suggestions)}"
+        else:
+            bot_response = "Please contact the FYJC center as I'm unable to help with your query"
+        
         log_entry = ChatLog(
             user_message=payload.message,
-            bot_response=f"Suggestions: {', '.join(s['question'] for s in suggestions)}"
+            bot_response=bot_response
         )
         db.add(log_entry)
         db.commit()
 
+        if not suggestions:
+            return {
+                "type": "no_match",
+                "message": "Please contact the FYJC center as I'm unable to help with your query"
+            }
+        
         return {
             "type": "suggestions",
             "suggestions": suggestions,

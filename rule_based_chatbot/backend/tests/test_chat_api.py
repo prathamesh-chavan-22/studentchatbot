@@ -23,7 +23,7 @@ def test_exact_match_returns_answer(client):
     assert ask.json()["answer"] == "FYJC is class 11 admission."
 
 
-def test_non_exact_returns_top4_suggestions(client):
+def test_non_exact_returns_80_percent_match_suggestions(client):
     client.post(
         "/api/admin/login",
         json={"username": "admin", "password": "admin123"},
@@ -38,11 +38,30 @@ def test_non_exact_returns_top4_suggestions(client):
     for q, a in rows:
         client.post("/api/admin/qna", json={"question": q, "answer": a})
 
-    ask = client.post("/api/chat/ask", json={"message": "How do I do online registration"})
+    ask = client.post("/api/chat/ask", json={"message": "How to register online"})
     assert ask.status_code == 200
     data = ask.json()
     assert data["type"] == "suggestions"
-    assert 1 <= len(data["suggestions"]) <= 4
+    assert len(data["suggestions"]) > 0
+
+
+def test_no_match_above_80_percent_returns_no_match_message(client):
+    client.post(
+        "/api/admin/login",
+        json={"username": "admin", "password": "admin123"},
+    )
+    rows = [
+        ("What is FYJC?", "A1"),
+        ("How to register online?", "A2"),
+    ]
+    for q, a in rows:
+        client.post("/api/admin/qna", json={"question": q, "answer": a})
+
+    ask = client.post("/api/chat/ask", json={"message": "tell me about xyz"})
+    assert ask.status_code == 200
+    data = ask.json()
+    assert data["type"] == "no_match"
+    assert "Please contact the FYJC center" in data["message"]
 
 
 def test_select_returns_stored_answer_as_is(client):
